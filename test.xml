@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ttab-proceedings [
+<!-- DOCUMENT TYPE DEFINITION FOR UNITED STATES TRADEMARK TRIAL AND APPEAL BOARD (TTAB) PROCEEDINGS
+Reference this DTD as PUBLIC "-//USPTO//DTD TTAB PROCEEDINGS V1.0 2004-02-13//EN"
+
+Contact:
+U.S. Patent and Trademark Office
+Electronic Information Products Division
+P.O. Box 1450
+Alexandria, VA 22313
+ipd@uspto.gov
+
+***** START REVISION HISTORY *****
+2000-09-01
+1) Renamed element ttab-proceedings to ttab-proceedings enforcing all uppercase element names.
+2) Changed xml encoding from "ISO-8859-1" to "UTF-8"
+3) Added prolog comment with DTD identification and contact information
+4) Defined initial version of V0.1 and build date of 2000-09-01.
+
+2000-11-14
+1) Added element mark-text to property group.
+
+2000-11-15
+1) Reviewed optionality requirements and made more elements optional to reflect source
+   database requirements.
+2) Removed PURGE-INDICATOR element.
+
+2001-03-21
+1) Added history-text to prosecution-entry and information-text to PROCEEDING.
+
+2002-07-1
+1) Removed information-text and added status-text to proceeding-entry.
+2) Added identifier to prosecution-entry.
+2002-08-26
+1)Added the interlocutory-attorney-name, location-code, day-in-location, charge-to-location-code, charge-to-employee-name, into proceeding-information
+2)Added data-available-code into proceeding-information
+2002-09-25
+1)Added the int-attorney-number(employee-number) into proceeding information
+2)Added identifier into party, property and address table
+2004-02-13
+1) Removed status-text from proceeding-entry (reference table).
+***** END REVISION HISTORY **********
+-->
+<!ELEMENT ttab-proceedings (version , action-key-code , transaction-date , proceeding-information)>
+<!ELEMENT version (version-no , version-date)>
+<!ELEMENT version-no (#PCDATA)>
+<!ELEMENT version-date (#PCDATA)>
+<!ELEMENT action-key-code (#PCDATA)>
+<!ELEMENT transaction-date (#PCDATA)>
+<!ELEMENT proceeding-information (data-available-code | proceeding-entry+)>
+<!ELEMENT data-available-code (#PCDATA)>
+<!ELEMENT proceeding-entry (number, type-code?, filing-date?, employee-number?, interlocutory-attorney-name?, location-code?, day-in-location?, charge-to-location-code?, charge-to-employee-name?, status-update-date?, status-code?, party-information?, prosecution-history?)>
+<!ELEMENT number (#PCDATA)>
+<!ELEMENT type-code (#PCDATA)>
+<!ELEMENT filing-date (#PCDATA)>
+<!ELEMENT employee-number (#PCDATA)>
+<!ELEMENT interlocutory-attorney-name (#PCDATA)>
+<!ELEMENT location-code (#PCDATA)>
+<!ELEMENT day-in-location (#PCDATA)>
+<!ELEMENT charge-to-location-code (#PCDATA)>
+<!ELEMENT charge-to-employee-name (#PCDATA)>
+<!ELEMENT status-update-date (#PCDATA)>
+<!ELEMENT status-code (#PCDATA)>
+<!ELEMENT party-information (party*)>
+<!ELEMENT party (identifier?, role-code?, name?, orgname?, property-information?, address-information?)>
+<!ELEMENT identifier (#PCDATA)>
+<!ELEMENT role-code (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT orgname (#PCDATA)>
+<!ELEMENT property-information (property*)>
+<!ELEMENT property (identifier?, serial-number?, registration-number?, mark-text?)>
+<!ELEMENT serial-number (#PCDATA)>
+<!ELEMENT registration-number (#PCDATA)>
+<!ELEMENT mark-text (#PCDATA)>
+<!ELEMENT address-information (proceeding-address*)>
+<!ELEMENT proceeding-address (identifier?, type-code?, name?, orgname?, address-1?, city?, state?, country?, postcode?)>
+<!ELEMENT address-1 (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT postcode (#PCDATA)>
+<!ELEMENT prosecution-history (prosecution-entry*)>
+<!ELEMENT prosecution-entry (identifier?, code?, type-code?, due-date?, date?, history-text?)>
+<!ELEMENT code (#PCDATA)>
+<!ELEMENT due-date (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT history-text (#PCDATA)>
+]>
+<ttab-proceedings>
+  <version>
+    <version-no>v1.0</version-no>
+    <version-date>20040213</version-date>
+  </version>
+  <action-key-code>DA</action-key-code>
+  <transaction-date>20180418</transaction-date>
+  <proceeding-information>
+    <proceeding-entry>
+      <number>79187966</number>
+      <type-code>EXA</type-code>
+      <filing-date>20170828</filing-date>
+      <location-code>845</location-code>
+      <day-in-location>20170828</day-in-location>
+      <status-update-date>20170828</status-update-date>
+      <status-code>2</status-code>
+      <party-information>
+        <party>
+          <identifier>855413</identifier>
+          <role-code>P</role-code>
+          <name>Equis Pte. Ltd.</name>
+          <property-information>
+            <property>
+              <identifier>971861</identifier>
+              <serial-number>79187966</serial-number>
+              <mark-text>EQUIS</mark-text>
+            </property>
+          </property-information>
+          <address-information>
+            <proceeding-address>
+              <identifier>1497431</identifier>
+              <type-code>C</type-code>
+              <name>BRITT L ANDERSON</name>
+              <orgname>K &amp; L GATES LLP</orgname>
+              <address-1>620 HANSEN WAY</address-1>
+              <city>PALO ALTO</city>
+              <state>CA</state>
+              <country>US</country>
+              <postcode>94304</postcode>
+            </proceeding-address>
+          </address-information>
+        </party>
+      </party-information>
+      <prosecution-history>
+        <prosecution-entry>
+          <identifier>1</identifier>
+          <code>158</code>
+          <type-code>X</type-code>
+          <date>20170828</date>
+          <history-text>APPEAL TO BOARD</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>2</identifier>
+          <code>155</code>
+          <type-code>X</type-code>
+          <date>20170828</date>
+          <history-text>Appeal Acknowledged; Case Remanded</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>3</identifier>
+          <code>128</code>
+          <type-code>T</type-code>
+          <date>20170828</date>
+          <history-text>INSTITUTED</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>4</identifier>
+          <code>179</code>
+          <type-code>X</type-code>
+          <date>20170906</date>
+          <history-text>PROCEEDINGS RESUMED</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>5</identifier>
+          <code>185</code>
+          <type-code>X</type-code>
+          <date>20170502</date>
+          <history-text>REQ FOR RECON</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>6</identifier>
+          <code>180</code>
+          <type-code>X</type-code>
+          <date>20171103</date>
+          <history-text>JURISDICTION RESTORED / REMANDED TO EXAMINER</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>7</identifier>
+          <code>424</code>
+          <type-code>P</type-code>
+          <date>20171124</date>
+          <history-text>RECON DENIED</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>8</identifier>
+          <code>164</code>
+          <type-code>X</type-code>
+          <date>20171129</date>
+          <history-text>BRIEF DUE</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>9</identifier>
+          <code>157</code>
+          <type-code>X</type-code>
+          <date>20180123</date>
+          <history-text>APPEAL BRIEF</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>10</identifier>
+          <code>181</code>
+          <type-code>X</type-code>
+          <date>20180130</date>
+          <history-text>APPEAL FORWARDED TO EXAMINER FOR BRIEF</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>11</identifier>
+          <code>173</code>
+          <type-code>T</type-code>
+          <date>20180320</date>
+          <history-text>EXAMINER'S STATEMENT</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>12</identifier>
+          <code>704</code>
+          <type-code>E</type-code>
+          <date>20180410</date>
+          <history-text>APPLICANT REQ FOR ORAL HEARING</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>13</identifier>
+          <code>661</code>
+          <type-code>P</type-code>
+          <date>20180418</date>
+          <history-text>ORAL HEARING REQUESTED; RESPONSE DUE</history-text>
+        </prosecution-entry>
+      </prosecution-history>
+    </proceeding-entry>
+    <proceeding-entry>
+      <number>79188696</number>
+      <type-code>EXA</type-code>
+      <filing-date>20180309</filing-date>
+      <location-code>845</location-code>
+      <day-in-location>20180309</day-in-location>
+      <status-update-date>20180309</status-update-date>
+      <status-code>2</status-code>
+      <party-information>
+        <party>
+          <identifier>879370</identifier>
+          <role-code>P</role-code>
+          <name>Ushio Denki Kabushiki Kaisha</name>
+          <property-information>
+            <property>
+              <identifier>1010863</identifier>
+              <serial-number>79188696</serial-number>
+              <mark-text>USHIO</mark-text>
+            </property>
+          </property-information>
+          <address-information>
+            <proceeding-address>
+              <identifier>1545321</identifier>
+              <type-code>C</type-code>
+              <name>LEIGH ANN LINDQUIST</name>
+              <orgname>SUGHRUE MION PLLC</orgname>
+              <address-1>2100 PENNSYLVANIA AVENUE, N.W.SUITE 800</address-1>
+              <city>WASHINGTON</city>
+              <state>DC</state>
+              <country>US</country>
+              <postcode>20037</postcode>
+            </proceeding-address>
+          </address-information>
+        </party>
+      </party-information>
+      <prosecution-history>
+        <prosecution-entry>
+          <identifier>1</identifier>
+          <code>158</code>
+          <type-code>X</type-code>
+          <date>20180309</date>
+          <history-text>APPEAL TO BOARD</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>2</identifier>
+          <code>155</code>
+          <type-code>X</type-code>
+          <date>20180309</date>
+          <history-text>Appeal Acknowledged; Case Remanded</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>3</identifier>
+          <code>128</code>
+          <type-code>T</type-code>
+          <date>20180309</date>
+          <history-text>INSTITUTED</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>4</identifier>
+          <code>185</code>
+          <type-code>X</type-code>
+          <date>20180309</date>
+          <history-text>REQ FOR RECON</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>5</identifier>
+          <code>424</code>
+          <type-code>P</type-code>
+          <date>20180406</date>
+          <history-text>RECON DENIED</history-text>
+        </prosecution-entry>
+        <prosecution-entry>
+          <identifier>6</identifier>
+          <code>179</code>
+          <type-code>X</type-code>
+          <date>20180418</date>
+          <history-text>PROCEEDINGS RESUMED</history-text>
+        </prosecution-entry>
+      </prosecution-history>
+    </proceeding-entry>
+  </proceeding-information>
+</ttab-proceedings>
