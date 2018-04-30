@@ -13,7 +13,6 @@ echo "Finished download.\n";
 
 // Unpack downloaded file and extract the file specified in the second argument
 echo "\nUnpacking zip file and extracting {$argv[2]}...\n";
-print_r(file_get_contents($tmp_filename));
 $zip = new ZipArchive;
 if ($zip->open($tmp_filename) === TRUE) {
     $zip->extractTo('.', $argv[2]);
