@@ -42,7 +42,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
       'orgname' => parse_text($address->orgname),
       'address-1' => $address->{'address-1'},
       'address-2' => $address->{'address-2'},
-      'city' => $address->city,
+      'city' => parse_text($address->city),
       'state' => $address->state,
       'country' => $address->country,
       'postcode' => $address->postcode,
