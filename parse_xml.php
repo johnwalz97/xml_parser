@@ -30,7 +30,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
     'proceeding-id' => $DB->insert_id,
     'identifier' => parse_int($party->identifier),
     'role-code' => $party->{'role-code'},
-    'name' => parse_text($party->name),
+    'name' => mysqli_real_escape_string($DB, $party->name),
   ]);
   $party_id = $DB->insert_id;
 
@@ -38,11 +38,11 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
   if ($address)
     db_insert($DB, 'proceeding-party-address', [
       'identifier' => parse_int($address->identifier),
-      'name' => parse_text($address->name),
-      'orgname' => parse_text($address->orgname),
+      'name' => mysqli_real_escape_string($DB, $address->name),
+      'orgname' => mysqli_real_escape_string($DB, $address->orgname),
       'address-1' => $address->{'address-1'},
       'address-2' => $address->{'address-2'},
-      'city' => parse_text($address->city),
+      'city' => mysqli_real_escape_string($DB, $address->city),
       'state' => $address->state,
       'country' => $address->country,
       'postcode' => $address->postcode,
@@ -54,7 +54,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
     db_insert($DB, 'proceeding-party-property', [
       'identifier' => parse_int($prop->identifier),
       'serial-number' => parse_int($prop->{'serial-number'}),
-      'mark-text' => parse_text($prop->{'mark-text'}),
+      'mark-text' => mysqli_real_escape_string($DB, $prop->{'mark-text'}),
       'proceeding-party-id' => $party_id,
     ]);
 
@@ -64,7 +64,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
       'code' => parse_int($pros->code),
       'type-code' => $pros->{'type-code'},
       'date' => parse_int($pros->date),
-      'history-text' => parse_text($pros->{'history-text'}),
+      'history-text' => mysqli_real_escape_string($DB, $pros->{'history-text'}),
     ]);
   }
 }

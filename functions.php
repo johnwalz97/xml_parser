@@ -42,8 +42,3 @@ function parse_int($str) {
   }
   return $str;
 }
-
-function parse_text($str) {
-  // return mysqli_real_escape_string($str);
-  return str_replace('\'', '\\\'', $str);
-}
