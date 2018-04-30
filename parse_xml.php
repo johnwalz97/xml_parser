@@ -1,21 +1,18 @@
 <?php
-// Set db configuration
-$DB_HOST = '';
-$DB_USER = '';
-$DB_PASS = '';
-$DB_NAME = '';
-// Set location of xml file
-$XML_FILE = '';
 
-// Include functions file
-require_once 'functions.php';
+// Make sure we have the xml file parameter
+if (!$argv[1])
+  die("Missing arguments.\n");
 
-$conn = db_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-$xml = parse_xml_file($XML_FILE);
+// Include configuration file
+require "config.php";
+
+// Parse the xml from the file
+$xml = parse_xml_file($argv[1]);
 
 // loop through xml and parse/store entries
 foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
-  db_insert($conn, 'proceeding-entry', [
+  db_insert($DB, 'proceeding-entry', [
     'number' => parse_int($entry->number),
     'type-code' => $entry->{'type-code'},
     'filing-date' => parse_int($entry->{'filing-date'}),
@@ -26,17 +23,17 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
   ]);
 
   $party = $entry->{'party-information'}->party;
-  db_insert($conn, 'proceeding-party', [
-    'proceeding-id' => $conn->insert_id,
+  db_insert($DB, 'proceeding-party', [
+    'proceeding-id' => $DB->insert_id,
     'identifier' => parse_int($party->identifier),
     'role-code' => $party->{'role-code'},
     'name' => parse_text($party->name),
   ]);
-  $party_id = $conn->insert_id;
+  $party_id = $DB->insert_id;
 
   $address = $party->{'address-information'}->{'proceeding-address'};
   if ($address)
-    db_insert($conn, 'proceeding-party-address', [
+    db_insert($DB, 'proceeding-party-address', [
       'identifier' => parse_int($address->identifier),
       'name' => parse_text($address->name),
       'orgname' => parse_text($address->orgname),
@@ -51,7 +48,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
 
   $prop = $party->{'property-information'}->property;
   if ($prop)
-    db_insert($conn, 'proceeding-party-property', [
+    db_insert($DB, 'proceeding-party-property', [
       'identifier' => parse_int($prop->identifier),
       'serial-number' => parse_int($prop->{'serial-number'}),
       'mark-text' => parse_text($prop->{'mark-text'}),
@@ -59,7 +56,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
     ]);
 
   foreach ($entry->{'prosecution-history'}->{'prosecution-entry'} as $pros) {
-    db_insert($conn, 'prosecution-entries', [
+    db_insert($DB, 'prosecution-entries', [
       'identifier' => parse_int($pros->identifier),
       'code' => parse_int($pros->code),
       'type-code' => $pros->{'type-code'},

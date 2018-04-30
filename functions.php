@@ -14,6 +14,7 @@ function parse_xml_file($file) {
   return $xml;
 }
 
+// Can be changed to support any db engine
 function db_connect($host, $user, $pass, $name) {
   $conn = new mysqli($host, $user, $pass, $name);
   if ($conn->connect_error) {
