@@ -41,7 +41,7 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
       'name' => mysqli_real_escape_string($DB, $address->name),
       'orgname' => mysqli_real_escape_string($DB, $address->orgname),
       'address-1' => mysqli_real_escape_string($DB, $address->{'address-1'}),
-      'address-2' => $address->{'address-2'},
+      'address-2' => mysqli_real_escape_string($DB, $address->{'address-2'}),
       'city' => mysqli_real_escape_string($DB, $address->city),
       'state' => $address->state,
       'country' => $address->country,
