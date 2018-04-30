@@ -21,5 +21,4 @@ with the proper parameters.
 ## Usage
 
 * Simply run `php run.php` to download/parse/store the latest xml.
-* `fetch_xml.php` and `parse_xml.php` can also be used without the `run.php`
-to get the xml from past dates.
+* Use `run_multi.php` to grab xml from range of dates e.g. `php run_multi.php 2018-01-01 2018-01-10`
