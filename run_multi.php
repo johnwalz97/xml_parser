@@ -1,7 +1,7 @@
 <?php
 
 if (!$argv[1] || !$argv[2])
-  die("Need two date parameters\n.")
+  die("Need two date parameters\n.");
 
 $begin = new DateTime($argv[1]);
 $end = new DateTime($argv[2]);
@@ -10,7 +10,7 @@ $interval = DateInterval::createFromDateString('1 day');
 $period = new DatePeriod($begin, $interval, $end);
 
 foreach ($period as $dt) {
-  echo "\n{$dt->format("l Y-m-d H:i:s\n")}\n";
+  echo "\n{$dt->format("l Y-m-d")}:\n";
   $date = $dt->format('ymd');
   $file = "tt{$date}.xml";
   $url = "https://bulkdata.uspto.gov/data/trademark/dailyxml/ttab/tt{$date}.zip";
