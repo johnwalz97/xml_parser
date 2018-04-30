@@ -1,16 +1,19 @@
 <?php
 
+// Include configuration file
+require "config.php";
+
 // Make sure we have the xml file parameter
 if (!$argv[1])
   die("Missing arguments.\n");
 
-// Include configuration file
-require "config.php";
-
 // Parse the xml from the file
+echo "\nParsing xml...\n";
 $xml = parse_xml_file($argv[1]);
+echo "Done parsing xml to array.\n";
 
 // loop through xml and parse/store entries
+echo "\nSaving xml data to database...\n";
 foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
   db_insert($DB, 'proceeding-entry', [
     'number' => parse_int($entry->number),
@@ -65,3 +68,4 @@ foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
     ]);
   }
 }
+echo "Done saving xml data.\n";

@@ -1,6 +1,6 @@
 CREATE TABLE `proceeding-entry` (
   `idproceeding-entry` int(11) NOT NULL AUTO_INCREMENT,
-  `number` int(11) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL UNIQUE,
   `type-code` varchar(45) DEFAULT NULL,
   `filing-date` int(11) DEFAULT NULL,
   `location-code` int(11) DEFAULT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `proceeding-entry` (
 CREATE TABLE `proceeding-party` (
   `idproceeding-party` int(11) NOT NULL AUTO_INCREMENT,
   `proceeding-id` int(11) DEFAULT NULL,
-  `identifier` int(11) DEFAULT NULL,
+  `identifier` int(11) DEFAULT NULL UNIQUE,
   `role-code` varchar(45) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idproceeding-party`)
@@ -22,7 +22,7 @@ CREATE TABLE `proceeding-party` (
 
 CREATE TABLE `proceeding-party-address` (
   `idproceeding-party-address` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` int(11) DEFAULT NULL,
+  `identifier` int(11) DEFAULT NULL UNIQUE,
   `name` varchar(255) DEFAULT NULL,
   `orgname` varchar(255) DEFAULT NULL,
   `address-1` varchar(255) DEFAULT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `proceeding-party-address` (
 
 CREATE TABLE `proceeding-party-property` (
   `idproceeding-party-property` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` int(11) DEFAULT NULL,
+  `identifier` int(11) DEFAULT NULL UNIQUE,
   `serial-number` int(11) DEFAULT NULL,
   `mark-text` text DEFAULT NULL,
   `proceeding-party-id` int(11) DEFAULT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `proceeding-party-property` (
 
 CREATE TABLE `prosecution-entries` (
   `idprosecution-entries` int(11) NOT NULL AUTO_INCREMENT,
-  `identifier` int(11) DEFAULT NULL,
+  `identifier` int(11) DEFAULT NULL UNIQUE,
   `code` int(11) DEFAULT NULL,
   `type-code` varchar(45) DEFAULT NULL,
   `date` int(11) DEFAULT NULL,

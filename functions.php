@@ -23,13 +23,17 @@ function db_connect($host, $user, $pass, $name) {
   return $conn;
 }
 
+
+// Uses replace into so it will update if row already exists
 function db_insert($conn, $table, $cols) {
+  // echo "\n\tInserting record into {$table}...\n";
   $cols_list = '`' . implode('`,`', array_keys($cols)) . '`';
   $vals = '\'' . implode('\',\'', $cols) . '\'';
-  $sql = "INSERT INTO `{$table}` ({$cols_list}) VALUES ({$vals})";
+  $sql = "REPLACE INTO `{$table}` ({$cols_list}) VALUES ({$vals})";
   if ($conn->query($sql) !== true) {
     die("Error running sql:\n\n{$sql}\n\n{$conn->error}");
   }
+  // echo "\tDone.\n";
 }
 
 function parse_int($str) {

@@ -15,11 +15,11 @@ in a MySQL database
 the zip located at the specified url and extracts the file from it to /tmp.
 * The `parse_xml.php` file takes a path to the xml file as a parameter and
 parses/stores it in the database configured in `config.php`.
-* The `index.php` is an entry script that calls `fetch_xml.php` and `parse_xml.php`
+* The `run.php` is an entry script that calls `fetch_xml.php` and `parse_xml.php`
 with the proper parameters.
 
 ## Usage
 
-* Simply run `php index.php` to download/parse/store the latest xml.
-* `fetch_xml.php` and `parse_xml.php` can also be used without the `index.php`
+* Simply run `php run.php` to download/parse/store the latest xml.
+* `fetch_xml.php` and `parse_xml.php` can also be used without the `run.php`
 to get the xml from past dates.
