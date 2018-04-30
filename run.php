@@ -1,6 +1,5 @@
 <?php
 
-// Get yymmdd format for url/filename
 $date = date('ymd', time() - 86400);
 $file = "tt{$date}.xml";
 $url = "https://bulkdata.uspto.gov/data/trademark/dailyxml/ttab/tt{$date}.zip";
