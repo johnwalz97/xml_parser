@@ -47,7 +47,7 @@ function parse_xml($file) {
   return $xml;
 }
 
-function save_xml($file) {
+function save_xml($db, $file) {
   $xml = parse_xml($file);
   foreach ($xml->{'proceeding-information'}->{'proceeding-entry'} as $entry) {
     $db->insert_or_update('proceeding-entry', [

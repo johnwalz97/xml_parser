@@ -5,6 +5,8 @@ if (!$argv[1] || !$argv[2])
 
 require_once "config.php";
 
+$db = new Database();
+
 $begin = new DateTime($argv[1]);
 $end = new DateTime($argv[2]);
 
@@ -17,7 +19,7 @@ foreach ($period as $dt) {
   $file = "tt{$date}.xml";
   $url = "https://bulkdata.uspto.gov/data/trademark/dailyxml/ttab/tt{$date}.zip";
   download_xml($url, $file);
-  save_xml($file);
+  save_xml($db, $file);
 
   // Delete parsed xml file
   unlink($file);
