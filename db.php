@@ -48,10 +48,10 @@ class Database {
 
   public function insert_or_update($table, $cols, $where) {
     $where = '`' . key($where) . '` = \'' . current($where) . "'";
-    if ($db->has($table, $where)) {
-      $db->update($table, $cols, $where);
+    if ($this->has($table, $where)) {
+      $this->update($table, $cols, $where);
     } else {
-      $db->insert($table, $cols);
+      $this->insert($table, $cols);
     }
   }
 }
