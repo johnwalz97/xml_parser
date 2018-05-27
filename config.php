@@ -1,10 +1,10 @@
 <?php
 
 // Sets DB configuration
-$DB_HOST = '';
-$DB_USER = '';
-$DB_PASS = '';
-$DB_NAME = '';
+$DB_HOST = 'localhost';
+$DB_USER = 'root';
+$DB_PASS = 't6yHfQVgZ5y9';
+$DB_NAME = 'xml_test_data';
 
 require_once 'db.php';
 
