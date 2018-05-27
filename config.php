@@ -6,8 +6,9 @@ $DB_USER = '';
 $DB_PASS = '';
 $DB_NAME = '';
 
-// Includes
-require_once 'functions.php';
 require_once 'db.php';
 
 $db = new Database();
+
+// Include functions
+require_once 'functions.php';
