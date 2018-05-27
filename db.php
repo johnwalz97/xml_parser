@@ -5,9 +5,8 @@ class Database {
   private $connection;
 
   private function connection() {
-    global $DB_HOST, $DB_USER, $DB_PASS, $DB_NAME;
     if (!$this->connection) {
-      $this->connection = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+      $this->connection = mysqli_connect($GLOBALS['DB_HOST'], $GLOBALS['DB_USER'], $GLOBALS['DB_PASS'], $GLOBALS['DB_NAME']);
       if (mysqli_connect_errno()) {
         die("Failed to connect to MySQL: " . mysqli_connect_error());
       }
