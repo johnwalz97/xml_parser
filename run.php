@@ -2,6 +2,8 @@
 
 require_once "config.php";
 
+print_r($GLOBALS);
+
 $db = new Database();
 
 $date = $argv[1] ?: date('ymd', time() - 86400);
