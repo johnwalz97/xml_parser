@@ -1,15 +1,12 @@
 <?php
 
-$date = date('ymd', time() - 86400);
-$file = "tt{$date}.xml";
+require_once "config.php";
+
+$date = $argv[1] ?: date('ymd', time() - 86400);
 $url = "https://bulkdata.uspto.gov/data/trademark/dailyxml/ttab/tt{$date}.zip";
+$file = "tt{$date}.xml";
 
-// Start the script that grabs the zip and extracts it
-echo shell_exec("php fetch_xml.php {$url} {$file}");
-// Start the script that parses the extracted file
-echo shell_exec("php parse_xml.php {$file}");
+download_xml($url, $file);
+save_xml($file);
 
-// Delete parsed xml file
 unlink($file);
-
-echo "\nDone\n";

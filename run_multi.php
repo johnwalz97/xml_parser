@@ -3,6 +3,8 @@
 if (!$argv[1] || !$argv[2])
   die("Need two date parameters\n.");
 
+require_once "config.php";
+
 $begin = new DateTime($argv[1]);
 $end = new DateTime($argv[2]);
 
@@ -14,11 +16,8 @@ foreach ($period as $dt) {
   $date = $dt->format('ymd');
   $file = "tt{$date}.xml";
   $url = "https://bulkdata.uspto.gov/data/trademark/dailyxml/ttab/tt{$date}.zip";
-
-  // Start the script that grabs the zip and extracts it
-  echo shell_exec("php fetch_xml.php {$url} {$file}");
-  // Start the script that parses the extracted file
-  echo shell_exec("php parse_xml.php {$file}");
+  download_xml($url, $file);
+  save_xml($file);
 
   // Delete parsed xml file
   unlink($file);
