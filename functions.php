@@ -59,10 +59,11 @@ function save_xml($db, $file) {
       'status-update-date' => parse_int($entry->{'status-update-date'}),
       'status-code' => parse_int($entry->{'status-code'}),
     ], ['number' => parse_int($entry->number)]);
+    $proceeding_id = $db->insert_id();
 
     $party = $entry->{'party-information'}->party;
     $db->insert_or_update('proceeding-party', [
-      'proceeding-id' => $db->insert_id(),
+      'proceeding-id' => $proceeding_id,
       'identifier' => parse_int($party->identifier),
       'role-code' => $party->{'role-code'},
       'name' => $db->escape($party->name),
@@ -95,12 +96,13 @@ function save_xml($db, $file) {
 
     foreach ($entry->{'prosecution-history'}->{'prosecution-entry'} as $pros) {
       $db->insert_or_update('prosecution-entries', [
+        'proceeding-id' => $proceeding_id,
         'identifier' => parse_int($pros->identifier),
         'code' => parse_int($pros->code),
         'type-code' => $pros->{'type-code'},
         'date' => parse_int($pros->date),
         'history-text' => $db->escape($pros->{'history-text'}),
-      ], ['identifier' => parse_int($pros->identifier)]);
+      ], ['proceeding-id' => $proceeding_id, 'identifier' => parse_int($pros->identifier)]);
     }
   }
 }

@@ -21,8 +21,6 @@ foreach ($period as $dt) {
   download_xml($url, $file);
   save_xml($db, $file);
 
-  // Delete parsed xml file
   unlink($file);
-
   echo "\nDone\n";
 }
